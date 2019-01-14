@@ -46,7 +46,7 @@ module Alpr::Package
     }
 
     def archive_name
-      "#{self.package_name}.tar.gz"
+      "#{self.package_version}.tar.gz"
     end
 
     def package_name
@@ -54,11 +54,11 @@ module Alpr::Package
     end
 
     def package_version
-      "3.03"
+      "3.05.02"
     end
 
     def archive_url
-      'https://drive.google.com/uc?id=0B7l10Bj_LprhSGN2bTYwemVRREU&export=download'
+      "https://github.com/tesseract-ocr/tesseract/archive/#{self.archive_name}"
     end
 
     def get_configure_options

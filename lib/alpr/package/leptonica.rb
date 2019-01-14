@@ -31,7 +31,7 @@ module Alpr::Package
     end
 
     def package_version
-      "1.71"
+      "1.75.3"
     end
 
     def archive_url
@@ -39,7 +39,7 @@ module Alpr::Package
     end
 
     def get_configure_options
-      %w{--enable-shared=no --disable-programs --without-zlib --without-libpng --without-jpeg --without-giflib --without-libtiff}
+      %w{--enable-shared=no --disable-programs --without-zlib --without-libpng --without-jpeg --without-giflib --without-libtiff --without-libwebp}
     end
 
     def do_autogen?

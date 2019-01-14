@@ -34,7 +34,7 @@ module Alpr
         system("echo '=======================================================================' >> #{opts[:log]}")
         system("echo Executing: #{Shellwords.shellescape(cmd)} >> #{opts[:log]}")
         system("echo '=======================================================================' >> #{opts[:log]}")
-        output = `#{cmd} 2>&1 >> #{opts[:log]}`
+        output = `#{cmd} >> #{opts[:log]} 2>&1`
       else
         output = `#{cmd} 2>&1`
         puts output unless opts[:quiet]

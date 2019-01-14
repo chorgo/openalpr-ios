@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    logger (1.2.8)
+    logger (1.3.0)
     osx-plist (1.0.3)
 
 PLATFORMS
@@ -12,4 +12,4 @@ DEPENDENCIES
   osx-plist (~> 1.0)
 
 BUNDLED WITH
-   1.10.6
+   2.0.1

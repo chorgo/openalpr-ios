@@ -200,7 +200,6 @@ set(CMAKE_MACOSX_BUNDLE YES)
 # https://public.kitware.com/Bug/view.php?id=15329
 message(STATUS "Disabling code signing for ALPR iOS framework")
 SET(CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED NO)
-SET(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Don't Code Sign")
 
 SET(WITH_DAEMON OFF)
 SET(WITH_UTILITIES OFF)

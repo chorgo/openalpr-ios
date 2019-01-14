@@ -75,7 +75,6 @@ module Alpr::Package
 
     #-----------------------------------------------------------------------------
     def env_for_arch(target, arch, headers_dir, lib_dir)
-
       sdk_root = arch.start_with?('arm') ? SDK_IPHONEOS : SDK_IPHONESIMULATOR
       if !File.exists?(sdk_root)
         raise "SDKROOT does not exist: #{sdk_root}"
@@ -94,6 +93,7 @@ module Alpr::Package
       if headers_dir
         cflags << "-I#{headers_dir}"
       end
+      cflags << '-DOS_IOS=1'
       cflags = cflags.join(' ')
 
       ldflags = [
@@ -118,11 +118,14 @@ module Alpr::Package
         'CPPFLAGS' => cflags,
         'CXXFLAGS' => cflags,
         'PATH' => "#{XCODETOOLCHAIN}/usr/bin:#{ENV['PATH']}",
+        'LD_LIBRARY_PATH' => lib_dir,
       }
 
       # TODO: do we need this?  clang complains about it
       if arch.start_with?('arm')
         env['BUILD_HOST_NAME'] = arch.sub(/^armv?(.+)/, 'arm-apple-darwin\1')
+      else
+        env['BUILD_HOST_NAME'] = arch + '-apple-darwin'
       end
 
       env
@@ -142,9 +145,10 @@ module Alpr::Package
       end
 
       if build_env['BUILD_HOST_NAME']
-        build_args.unshift("--host=#{build_env['BUILD_HOST_NAME']}")
+        build_args.unshift("--host=#{build_env['BUILD_HOST_NAME']} --target=#{build_env['BUILD_HOST_NAME']}")
       end
-      log_execute("./configure #{build_args.join(' ')} && make -j12 2>&1", build_env)
+      
+      log_execute("./configure #{build_args.join(' ')} && make -j4 2>&1", build_env)
     end
 
   end

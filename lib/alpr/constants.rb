@@ -26,7 +26,7 @@ module Alpr
 
     AR = xcfind("ar")
 
-    IOS_BASE_SDK="9.0"
+    IOS_BASE_SDK="12.1"
     IOS_DEPLOY_TGT="9.0"
 
     XCODE_CONFIGURATION = "Release"
